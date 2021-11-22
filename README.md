@@ -1,3 +1,23 @@
+Target Support - I made it so it target all printer since I do not mind people using it. 
+
+Add to Config.TargetModel
+
+    ["Printer"] = {
+        models = {
+            'prop_printer_01',
+        },
+        options = {
+            {
+                type = "client",
+                event = "qb-printer:client:openprinter",
+                icon = "fas fa-mouse-pointer",
+                label = "Print Documents",
+            },
+        },
+        distance = 3.0
+    },
+
+
 # qb-printer
 Printer For QB-Core
 
