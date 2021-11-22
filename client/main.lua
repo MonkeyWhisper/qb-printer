@@ -40,14 +40,21 @@ end)
 
 -- Command
 
-RegisterCommand('useprinter', function()
-    local ped = PlayerPedId()
-    local pos = GetEntityCoords(ped)
-    local PrinterObject = GetClosestObjectOfType(pos.x, pos.y, pos.z, 1.5, `prop_printer_01`, false, false, false)
-    if PrinterObject ~= 0 then
-        SendNUIMessage({
-            action = "start"
-        })
-        SetNuiFocus(true, true)
-    end
+RegisterNetEvent('qb-printer:client:openprinter')
+AddEventHandler('qb-printer:client:openprinter', function()
+        local ped = PlayerPedId()
+        local pos = GetEntityCoords(ped)
+        local PrinterObject = GetClosestObjectOfType(pos.x, pos.y, pos.z, 1.5, `prop_printer_01`, false, false, false)
+
+        if PrinterObject ~= 0 then
+            local PrinterCoords = GetEntityCoords(PrinterObject)
+            SendNUIMessage({
+                action = "start"
+            })
+            SetNuiFocus(true, true)
+        else
+            Wait(1000)
+        end
+
+        Wait(3)
 end)
